@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise AI Mail | Financial Solutions</title>
+    <link href="fonts.googleapis.com" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="header">
+        <div class="brand">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+          </svg>
+          AUTO_MAIL AI
+        </div>
+        <div
+          style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted)"
+        >
+          v0.0.1 MEU TESTE
+        </div>
+      </header>
+
+      <main class="main-card">
+        <h1>Triagem Inteligente</h1>
+        <p class="instruction-text">
+          Nossa IA classifica automaticamente o teor da mensagem e sugere a
+          melhor tratativa para o setor financeiro.
+        </p>
+
+        <form method="POST">
+          <div class="input-group">
+            <label for="email_texto">CONTEÚDO DO E-MAIL</label>
+            <textarea
+              id="email_texto"
+              name="email_texto"
+              placeholder="Cole o corpo do e-mail recebido aqui..."
+              required
+            >
+{{ texto if texto }}</textarea
+            >
+          </div>
+          <button type="submit" class="btn-submit">PROCESSAR AGORA</button>
+        </form>
+
+        {% if classificacao %}
+        <section class="result-grid">
+          <div
+            class="status-indicator {% if 'Produtivo' in classificacao %}status-produtivo{% else %}status-improdutivo{% endif %}"
+          >
+            <span class="dot"></span>
+            CLASSE: {{ classificacao }}
+          </div>
+
+          <div class="response-card">
+            <div class="response-header">Sugestão de Resposta</div>
+            <div
+              style="white-space: pre-wrap; font-size: 1.05rem; color: #334155"
+            >
+              {{ resposta }}
+            </div>
+          </div>
+        </section>
+        {% endif %}
+      </main>
+    </div>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      "
+    >
+      &copy; 2026 Enterprise Financial Services. Desenvolvido para o programa de
+      Estágio e Trainee da AutoU.
+    </footer>
+  </body>
+</html>
